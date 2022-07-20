@@ -7,50 +7,47 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | nick_name          | string | null: false               |
+| name               | string | null: false               |
 | birth_date         | date   | null: false               |
 
 - has_many :items
-- has_many :purchase_record
+- has_many :purchase_records
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| title         | string     | null: false                    |
-| image         | text       | null: false                    |
-| text          | text       | null: false                    |
-| category      | text       | null: false                    |
-| state         | text       | null: false                    |
-| postage       | text       | null: false                    |
-| region        | text       | null: false                    |
-| shipping_date | date       | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| title            | string     | null: false                    |
+| text             | text       | null: false                    |
+| category_id      | text       | null: false                    |
+| status_id        | text       | null: false                    |
+| postage_id       | text       | null: false                    |
+| region_id        | text       | null: false                    |
+| shipping_date_id | date       | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
-- has_many :purchase_record
+- has_one :purchase_record
 - belongs_to :user
 
-## purchase_record テーブル
+## purchase_records テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | item           | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
-| price          | text       | null: false                    |
-| quantity       | integer    | null: false                    |
-| purchase_date  | date       | null: false                    |
 
 - belongs_to :user
 - belongs_to :item
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| post_code       | text       | null: false                    |
+| post_code       | string     | null: false                    |
 | prefecture      | text       | null: false                    |
-| municipalities  | text       | null: false                    |
-| building_name   | text       |                                |
-| phone_number    | text       | null: false                    |
+| municipalities  | string     | null: false                    |
+| address 　　　   | string     | null: false                    |
+| building_name   | string     |                                |
+| phone_number    | string     | null: false                    |
 
-- has_one :shipping_address
 - belongs_to :purchase_record
