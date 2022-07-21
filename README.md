@@ -6,8 +6,7 @@
 | --------------------- | ------ | ------------------------- |
 | nick_name             | string | null: false               |
 | email                 | string | null: false, unique: true |
-| password              | string | null: false               |
-| password_confirmation | string | null: false               |
+| encrypted_password    | string | null: false               |
 | name                  | string | null: false               |
 | name_kana             | string | null: false               |
 | birth_date            | date   | null: false               |
@@ -22,11 +21,12 @@
 | title            | string     | null: false                    |
 | text             | text       | null: false                    |
 | category_id      | text       | null: false                    |
-| status_id        | references | null: false, foreign_key: true |
-| postage_id       | references | null: false, foreign_key: true |
-| region_id        | references | null: false, foreign_key: true |
-| shipping_date_id | references | null: false, foreign_key: true |
-| user_id          | references | null: false, foreign_key: true |
+| status           | references | null: false, foreign_key: true |
+| postage          | references | null: false, foreign_key: true |
+| region           | references | null: false, foreign_key: true |
+| shipping_date    | references | null: false, foreign_key: true |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 - has_one :purchase_record
 - belongs_to :user
@@ -35,11 +35,12 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| item_id        | references | null: false, foreign_key: true |
-| user_id        | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
 
-- has_one :user
-- has_one :item
+- belongs_to :user
+- belongs_to :item
+- has_one
 
 ## shipping_addresses テーブル
 
@@ -47,8 +48,8 @@
 | --------------- | ---------- | ------------------------------ |
 | post_code       | string     | null: false                    |
 | region_id       | references | null: false, foreign_key: true |
-| municipalities  | string     | null: false                    |
-| address 　　　   | string     | null: false                    |
+| municipalities  | string     | null: false, foreign_key: true |
+| address 　　　   | string     | null: false, foreign_key: true |
 | building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
 
