@@ -21,8 +21,8 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | -------------------------------|
 | title            | string     | null: false                    |
-| text             | text       | null: false                    |
-| category_id      | text       | null: false                    |
+| introduction     | text       | null: false                    |
+| category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
 | postage_id       | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
@@ -49,7 +49,7 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | post_code       | string     | null: false                    |
-| prefecture      | integer    | null: false, foreign_key: true |
+| prefecture_id   | integer    | null: false                    |
 | municipalities  | string     | null: false                    |
 | address 　　　   | string     | null: false                    |
 | building_name   | string     |                                |
