@@ -70,7 +70,7 @@ RSpec.describe User, type: :model do
         @user.password = 'ａｂｃ１２３'
         @user.password_confirmation = 'ａｂｃ１２３'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password is half_size characters')
+        expect(@user.errors.full_messages).to include('Password include both letters and numbers')
       end
 
       it "passwordとpassword_confirmationが不一致では登録できない" do
