@@ -105,12 +105,12 @@ RSpec.describe Item, type: :model do
       it '発送までの日数の情報が空欄だと出品できない' do
         @item.shipping_date_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping date can't be blank", "Shipping date is not a number")
+        expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
       it '価格が空欄だと出品できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格の範囲が、300円未満だと出品できない' do
         @item.price = 100
