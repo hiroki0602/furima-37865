@@ -124,14 +124,14 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
-      新規投稿商品
+      <%= link_to '新規投稿商品', new_item_path, method: :get %>
     </div>
     <ul class='item-lists'>
 
     <%# 商品がある場合の表示 %>  
     <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to items_path do %>
+        <%= link_to item_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
